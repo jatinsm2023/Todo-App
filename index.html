@@ -12,9 +12,7 @@
     <title>Todo App-Costmize Your Work</title>
     <style>
         footer {
-            position: fixed;
-            bottom: 0;
-
+            margin-top: 5rem;
             width: 100%;
         }
 
@@ -47,7 +45,7 @@
 
         }
 
-        @media (max-width: 570px) {
+        @media (max-width: 770px) {
             footer {
                 flex-direction: column;
                 align-items: center;
@@ -93,7 +91,10 @@
                     <input type="text" class="js-name form-control" placeholder="Add Task" aria-label="First name">
                 </div>
                 <div class="col-md-auto mb-2">
-                    <input type="date" class="js-date form-control" name="" id="" placeholder="Enter Date">
+                    <input type="date" class="js-date form-control" name="date" id="" placeholder="Enter Date">
+                </div>
+                <div class="col-md-auto mb-2">
+                    <input type="time" class="js-time form-control" name="time" id="" placeholder="Enter time">
                 </div>
                 <div class="col col-lg-2 text-center mb-2">
                     <button type="button" class="btn btn-success js-add" onclick=" AddTask();">Add Task</button>
