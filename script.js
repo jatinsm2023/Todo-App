@@ -2,7 +2,8 @@ let Tasks = JSON.parse(localStorage.getItem('Tasks')) || [
     {
         Entry: 0,
         task: 'Hit the Gym',
-        taskDate: "2023-01-01"
+        taskDate: "2023-01-01",
+        tasktime: '12:00',
     }
 ]
 // let m = 0;
@@ -14,7 +15,8 @@ function AddTask() {
     m = 0;
     let task = document.querySelector('.js-name').value;
     let taskDate = document.querySelector('.js-date').value;
-    if (task == '' || taskDate == '') {
+    let tasktime = document.querySelector('.js-time').value;
+    if (task == '' || taskDate == '' || tasktime == '') {
         alert('Please fill all fields');
     }
     else {
@@ -25,6 +27,7 @@ function AddTask() {
             Entry: Entry,
             task: task,
             taskDate: taskDate,
+            tasktime: tasktime,
         }
         Tasks.push(obj);
         // console.log(Tasks);
@@ -32,6 +35,7 @@ function AddTask() {
         m++;
         document.querySelector('.js-name').value = '';
         document.querySelector('.js-date').value = '';
+        document.querySelector('.js-time').value = '';
     }
     localStorage.setItem('Tasks', JSON.stringify(Tasks));
     // console.log(localStorage.getItem('Tasks'));
@@ -47,6 +51,7 @@ function Display() {
             <div class="d-flex bd-highlight mb-3">
                 <div class="mx-1 bd-highlight form-control ">${Tasks[i].task}</div>
                 <div class="mx-1 bd-highlight form-control ">${Tasks[i].taskDate}</div>
+                 <div class="mx-1 bd-highlight form-control ">${Tasks[i].tasktime}</div>
                 <div class="mx-1 bd-highlight"><button type="button" class="btn btn-warning" onclick="Edit(${Tasks[i].Entry});">Edit</button></div>
                 <div class="mx-1 bd-highlight"><button type="button" class="btn btn-danger" onclick="Delete(${Tasks[i].Entry});">Delete</button></div>
             </div>
@@ -79,6 +84,7 @@ function Edit(Ent) {
     document.querySelector('.js-add').innerText = 'Edit Here';
     document.querySelector('.js-name').value = Tasks[Ent].task;
     document.querySelector('.js-date').value = Tasks[Ent].taskDate;
+    document.querySelector('.js-time').value = Tasks[Ent].tasktime;
     Delete(Ent);
     Display();
 }
