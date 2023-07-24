@@ -42,6 +42,18 @@ function AddTask() {
     // console.log(localStorage.getItem('Tasks'));
 }
 
+function tConvert (time) {
+    // Check correct time format and split into components
+    time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+  
+    if (time.length > 1) { // If time format correct
+      time = time.slice (1);  // Remove full string match value
+      time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+      time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join (''); // return adjusted time or original string
+  }
+
 function Display() {
     let html = '';
     document.querySelector('.todo-list').innerHTML = "";
@@ -57,12 +69,12 @@ function Display() {
                     ${new Date(`${Tasks[i].taskDate}`).toDateString().slice(4,10)}
                     </div>
                     <div class="col text-center text-${mode === 'light' ? 'dark' : 'light'}">
-                    ${Tasks[i].tasktime}
+                   ${tConvert(`${Tasks[i].tasktime}`)}
                     </div>
-                    <span class="col-sm-1 text-center text-${mode === 'light' ? 'dark' : 'light'} btn btn-outline-warning m-1 my-2 border-0" onclick="Edit(${Tasks[i].Entry});">
+                    <span class="col-sm-1 text-center text-${mode === 'light' ? 'dark' : 'light'} btn btn-outline-warning m-1 my-2" onclick="Edit(${Tasks[i].Entry});">
                     &#9998;
                     </span>
-                    <span class="col-sm-1 text-center text-dark btn btn-outline-danger m-1 border-0" onclick="Delete(${Tasks[i].Entry});">
+                    <span class="col-sm-1 text-center text-dark btn btn-outline-danger m-1 " onclick="Delete(${Tasks[i].Entry});">
                     &#10006;
                     </span>
                 </div>
