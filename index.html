@@ -83,25 +83,25 @@
         </symbol>
     </svg>
     <div class="Navbar"></div>
-    <div class="jatin">
-        <h2 align="center" class="my-3">Today's Tasks</h2>
+       <div class="jatin">
+        <h2 align="center"  style="margin-top: 81px;
+        margin-bottom: 10px">Tasks To do</h2>
         <div class="container">
-            <div class="row ">
-                <div class="col mb-2">
+            <div class="row mx-1">
+                <div class="col-sm-4 my-1 p-0">
                     <input type="text" class="js-name form-control" placeholder="Add Task" aria-label="First name">
                 </div>
-                <div class="col-md-auto mb-2">
-                    <input type="date" class="js-date form-control" name="date" id="" placeholder="Enter Date">
+                <div class="col-sm-4 my-1 px-1">
+                    <input type="date" class="js-date form-control" name="" id="" placeholder="Enter Date">
                 </div>
-                <div class="col-md-auto mb-2">
-                    <input type="time" class="js-time form-control" name="time" id="" placeholder="Enter time">
-                </div>
-                <div class="col col-lg-2 text-center mb-2">
-                    <button type="button" class="btn btn-success js-add" onclick=" AddTask();">Add Task</button>
-                </div>
+                <div class="col-sm-3 my-1 px-1">
+                    <input type="time" class="js-time form-control " name="" id="" placeholder="Enter time">
+                </div>   
+                <button type="button" class="btn col-sm-1 my-1 text-center btn-success js-add"
+                    onclick=" AddTask();">Add Task</button>
             </div>
         </div>
-        <div class="todo-list"></div>
+        <div class="todo-list px-3"></div>
     </div>
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center  border-top py-3">
