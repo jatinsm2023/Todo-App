@@ -7,9 +7,9 @@ let Tasks = JSON.parse(localStorage.getItem('Tasks')) || [
     }
 ]
 // let m = 0;
-
+let mode = 'light';
 Display();
-Navbar('light');
+Navbar();
 function AddTask() {
     document.querySelector('.js-add').innerText = 'Add Task';
     m = 0;
@@ -31,6 +31,7 @@ function AddTask() {
         }
         Tasks.push(obj);
         // console.log(Tasks);
+        console.log();
         Display();
         m++;
         document.querySelector('.js-name').value = '';
@@ -47,14 +48,24 @@ function Display() {
 
     for (let i = 0; i < Tasks.length; i++) {
         html = `
-        <div class="container">
-            <div class="d-flex bd-highlight mb-3">
-                <div class="mx-1 bd-highlight form-control ">${Tasks[i].task}</div>
-                <div class="mx-1 bd-highlight form-control ">${Tasks[i].taskDate}</div>
-                 <div class="mx-1 bd-highlight form-control ">${Tasks[i].tasktime}</div>
-                <div class="mx-1 bd-highlight"><button type="button" class="btn btn-warning" onclick="Edit(${Tasks[i].Entry});">Edit</button></div>
-                <div class="mx-1 bd-highlight"><button type="button" class="btn btn-danger" onclick="Delete(${Tasks[i].Entry});">Delete</button></div>
-            </div>
+        <div class="container border border-3 border-primary my-2 px-2 rounded">
+                <div class="row align-items-center mx-1 py-1">
+                    <div class="col text-center text-${mode === 'light' ? 'dark' : 'light'}">
+                    ${Tasks[i].task}
+                    </div>
+                    <div class="col text-center text-${mode === 'light' ? 'dark' : 'light'}">
+                    ${new Date(`${Tasks[i].taskDate}`).toDateString().slice(4,10)}
+                    </div>
+                    <div class="col text-center text-${mode === 'light' ? 'dark' : 'light'}">
+                    ${Tasks[i].tasktime}
+                    </div>
+                    <span class="col-sm-1 text-center text-${mode === 'light' ? 'dark' : 'light'} btn btn-outline-warning m-1 my-2 border-0" onclick="Edit(${Tasks[i].Entry});">
+                    &#9998;
+                    </span>
+                    <span class="col-sm-1 text-center text-dark btn btn-outline-danger m-1 border-0" onclick="Delete(${Tasks[i].Entry});">
+                    &#10006;
+                    </span>
+                </div>
         </div>
         ` + html;
         // let prev = document.querySelector('.todo-list').innerHTML;
@@ -80,7 +91,7 @@ function Delete(Ent) {
 }
 
 function Edit(Ent) {
-
+    console.log();
     document.querySelector('.js-add').innerText = 'Edit Here';
     document.querySelector('.js-name').value = Tasks[Ent].task;
     document.querySelector('.js-date').value = Tasks[Ent].taskDate;
@@ -90,29 +101,32 @@ function Edit(Ent) {
 }
 // let mode = 'light';
 
-function Modeswap(mode) {
+function Modeswap() {
     if (mode === 'light') {
         // console.log("hello");
         mode = 'dark';
+        // window['mode'] = 'dark';
         document.body.style.backgroundColor = '#3F3F3F';
         document.body.style.color = '#fff';
-        // console.log(mode);
-
+        console.log();
+        
     }
     else {
-        // console.log(mode);
         mode = 'light';
+        // window['mode'] = 'light';
         document.body.style.backgroundColor = 'white';
         document.body.style.color = 'black';
+        console.log();
 
     }
-    Navbar(mode);
+    Navbar();
+    Display();
 
 }
 
-function Navbar(mode) {
+function Navbar() {
     let html = `
-    <nav class="navbar navbar-expand-lg navbar-${mode} bg-${mode}" id="Navbar">
+    <nav class="navbar navbar-expand-lg navbar-${mode} bg-${mode==='dark'?'dark':'light'}" id="Navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">Todo App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -121,12 +135,12 @@ function Navbar(mode) {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="about.html">About</a>
+                        <a class="nav-link active"  href="about.html">About</a>
                         
                     </li>
                 </ul>
