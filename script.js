@@ -138,7 +138,7 @@ function Modeswap() {
 
 function Navbar() {
     let html = `
-    <nav class="navbar navbar-expand-lg navbar-${mode} bg-${mode==='dark'?'dark':'primary'}" id="Navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-${mode==='dark'?'dark':'primary'}" id="Navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">Todo App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
