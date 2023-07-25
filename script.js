@@ -1,9 +1,9 @@
 let Tasks = JSON.parse(localStorage.getItem('Tasks')) || [
     {
         Entry: 0,
-        task: 'Hit the Gym',
-        taskDate: "2023-01-01",
-        tasktime: '12:00',
+        task: 'Planing',
+        taskDate: `${new Date().toDateString().slice(4,10)}`,
+        tasktime: `${new Date().toTimeString().slice(0,5)}`,
     }
 ]
 // let m = 0;
@@ -62,19 +62,19 @@ function Display() {
         html = `
         <div class="container border border-3 border-primary my-2 px-2 rounded">
                 <div class="row align-items-center mx-1 py-1">
-                    <div class="col text-center text-${mode === 'light' ? 'dark' : 'light'}">
+                    <div class="col text-center border border-2 border-success rounded m-1 p-1 text-${mode === 'light' ? 'dark' : 'light'}">
                     ${Tasks[i].task}
                     </div>
-                    <div class="col text-center text-${mode === 'light' ? 'dark' : 'light'}">
+                    <div class="col text-center border border-2 border-success rounded m-1 p-1 text-${mode === 'light' ? 'dark' : 'light'}">
                     ${new Date(`${Tasks[i].taskDate}`).toDateString().slice(4,10)}
                     </div>
-                    <div class="col text-center text-${mode === 'light' ? 'dark' : 'light'}">
-                   ${tConvert(`${Tasks[i].tasktime}`)}
+                    <div class="col text-center border border-2 border-success rounded m-1 p-1 text-${mode === 'light' ? 'dark' : 'light'}">
+                    ${tConvert(`${Tasks[i].tasktime}`)}
                     </div>
-                    <span class="col-sm-1 text-center text-${mode === 'light' ? 'dark' : 'light'} btn border-2 btn-outline-warning m-1 my-2" onclick="Edit(${Tasks[i].Entry});">
+                    <span class="col-sm-1 text-center text-${mode === 'light' ? 'dark' : 'light'} btn border-2 btn-outline-warning m-1 my-2 " onclick="Edit(${Tasks[i].Entry});">
                     &#9998;
                     </span>
-                    <span class="col-sm-1 text-center text-dark btn border-2 btn-outline-danger m-1 " onclick="Delete(${Tasks[i].Entry});">
+                    <span class="col-sm-1 text-center text-dark btn border-2 btn-outline-danger m-1" onclick="Delete(${Tasks[i].Entry});">
                     &#10006;
                     </span>
                 </div>
@@ -138,7 +138,7 @@ function Modeswap() {
 
 function Navbar() {
     let html = `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-${mode==='dark'?'dark':'primary'}" id="Navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-${mode==='dark'?'dark':'primary'}" id="Navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">Todo App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
