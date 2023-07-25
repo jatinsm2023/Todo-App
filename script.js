@@ -71,10 +71,10 @@ function Display() {
                     <div class="col text-center text-${mode === 'light' ? 'dark' : 'light'}">
                    ${tConvert(`${Tasks[i].tasktime}`)}
                     </div>
-                    <span class="col-sm-1 text-center text-${mode === 'light' ? 'dark' : 'light'} btn btn-outline-warning m-1 my-2" onclick="Edit(${Tasks[i].Entry});">
+                    <span class="col-sm-1 text-center text-${mode === 'light' ? 'dark' : 'light'} btn border-2 btn-outline-warning m-1 my-2" onclick="Edit(${Tasks[i].Entry});">
                     &#9998;
                     </span>
-                    <span class="col-sm-1 text-center text-dark btn btn-outline-danger m-1 " onclick="Delete(${Tasks[i].Entry});">
+                    <span class="col-sm-1 text-center text-dark btn border-2 btn-outline-danger m-1 " onclick="Delete(${Tasks[i].Entry});">
                     &#10006;
                     </span>
                 </div>
